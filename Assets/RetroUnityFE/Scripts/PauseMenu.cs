@@ -7,8 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
     public GameObject PauseMenuUI;
-    public GameObject pauseFirstButton;
-    public GameObject ratBall;
+    public GameObject BodyMenuController;
 
     private void Start()
     {
@@ -17,7 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Fire3"))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             if (gameIsPaused)
                 Resume();
@@ -29,19 +28,16 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         PauseMenuUI.SetActive(false);
-        ratBall.SetActive(true);
-        Time.timeScale = 1f;
+        BodyMenuController.SetActive(false);
+        //Time.timeScale = 1f;
         gameIsPaused = false;
-        //Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void Pause()
     {
         PauseMenuUI.SetActive(true);
-        ratBall.SetActive(false);
-        Time.timeScale = 0f;
+        BodyMenuController.SetActive(true);
+        //Time.timeScale = 0f;
         gameIsPaused = true;
-        //Cursor.lockState = CursorLockMode.None;
-        FindObjectOfType<MenuController>().SelectFirstMenuButton(pauseFirstButton);
     }
 }

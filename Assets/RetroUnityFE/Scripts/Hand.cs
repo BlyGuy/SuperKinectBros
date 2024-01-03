@@ -42,9 +42,16 @@ public class Hand : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Button"))
         {
-            //collision.GetComponent<Button>().animator.Play("Highlighted", 0);
-            if(handClosed)
+            try { collision.GetComponent<Button>().animator.Play("Highlighted", 0); }
+            catch { }
+            if (handClosed)
                 collision.gameObject.GetComponent<Button>().onClick.Invoke();
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        try { collision.GetComponent<Button>().animator.Play("Normal", 0); }
+        catch { }
     }
 }
