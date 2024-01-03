@@ -40,7 +40,11 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (handClosed && collision.gameObject.CompareTag("Button"))
-            collision.gameObject.GetComponent<Button>().onClick.Invoke();
+        if (collision.gameObject.CompareTag("Button"))
+        {
+            //collision.GetComponent<Button>().animator.Play("Highlighted", 0);
+            if(handClosed)
+                collision.gameObject.GetComponent<Button>().onClick.Invoke();
+        }
     }
 }
