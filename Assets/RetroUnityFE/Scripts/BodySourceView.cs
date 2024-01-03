@@ -14,12 +14,11 @@ using System;
 public class BodySourceView : MonoBehaviour 
 {
     public Material BoneMaterial;
-    public GameObject BodySourceManager;
     public float RunningConfidence = 0.0F;
-    //private CameraSpacePoint[] calibrationPositions = new CameraSpacePoint[25];
+    public BodySourceManager _BodyManager;
     
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
-    private BodySourceManager _BodyManager;
+    //private CameraSpacePoint[] calibrationPositions = new CameraSpacePoint[25];
     
     private Dictionary<JointType, JointType> _BoneMap = new Dictionary<JointType, JointType>()
     {
@@ -56,12 +55,6 @@ public class BodySourceView : MonoBehaviour
     void Update () 
     {
         //Get Kinect data
-        if (BodySourceManager == null)
-            return;
-        
-        _BodyManager = BodySourceManager.GetComponent<BodySourceManager>();
-        if (_BodyManager == null)
-            return;
         
         Body[] data = _BodyManager.GetData();
         if (data == null)
