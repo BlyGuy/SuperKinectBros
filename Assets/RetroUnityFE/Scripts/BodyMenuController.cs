@@ -98,7 +98,7 @@ public class BodyMenuController : MonoBehaviour
             Joint sourceJoint = body.Joints[_joint];
             Vector3 targetPosition = GetVector3FromJoint(sourceJoint);
             targetPosition -= middleHeight;
-            targetPosition.z = 0;
+            targetPosition.z = -0.1f;
             
             //Set the position of the joint object in the body
             Transform jointObj = bodyObject.transform.Find(_joint.ToString());
