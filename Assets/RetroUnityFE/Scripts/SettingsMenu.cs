@@ -9,34 +9,40 @@ public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public float mouseSensitivity = 100f;
+    
+    public bool isFullscreen = true;
+    public GameObject fullscreenCheckmark;
 
-    Resolution[] resolutions;
-    public TMP_Dropdown resolutionDropdown;
+    public bool KinectViewMoved = false;
+    public Transform KinectViewTransform;
+
+    //Resolution[] resolutions;
+    //public TMP_Dropdown resolutionDropdown;
 
     void Start()
     {
-        resolutions = Screen.resolutions;
+        //resolutions = Screen.resolutions;
 
-        resolutionDropdown.ClearOptions();
+        //resolutionDropdown.ClearOptions();
 
-        List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
+        //List<string> options = new List<string>();
+        //int currentResolutionIndex = 0;
 
-        for(int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + "x" + resolutions[i].height;
-            options.Add(option);
+        //for(int i = 0; i < resolutions.Length; i++)
+        //{
+        //    string option = resolutions[i].width + "x" + resolutions[i].height;
+        //    options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width && 
-                resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
+        //    if (resolutions[i].width == Screen.currentResolution.width && 
+        //        resolutions[i].height == Screen.currentResolution.height)
+        //    {
+        //        currentResolutionIndex = i;
+        //    }
+        //}
 
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
+        //resolutionDropdown.AddOptions(options);
+        //resolutionDropdown.value = currentResolutionIndex;
+        //resolutionDropdown.RefreshShownValue();
     }
 
 
@@ -45,19 +51,31 @@ public class SettingsMenu : MonoBehaviour
         audioMixer.SetFloat("volume", volume);
     }
 
-    public void SetQuality(int qualityIndex)
+    //public void SetQuality(int qualityIndex)
+    //{
+    //    QualitySettings.SetQualityLevel(qualityIndex);
+    //}
+
+    public void ToggleFullscreen()
     {
-        QualitySettings.SetQualityLevel(qualityIndex);
+
+        isFullscreen = !isFullscreen; //Toggle bool
+        Screen.fullScreen = isFullscreen; //Toggle screen
+        fullscreenCheckmark.SetActive(isFullscreen);//Toggle checkmark
     }
 
-    public void SetFullscreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
-    }
+    //public void SetResolution(int resolutionIndex)
+    //{
+    //    Resolution resolution = resolutions[resolutionIndex];
+    //    Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    //}
 
-    public void SetResolution(int resolutionIndex)
+    public void ToggleMoveKinectView()
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        //if (KinectViewMoved)
+        //    KinectViewTransform.localPosition += 500.0f;
+        //else
+        //    KinectViewTransform.localPosition -= 500.0f;
+        KinectViewMoved = !KinectViewMoved;
     }
 }

@@ -17,7 +17,7 @@ public class BodySourceView : MonoBehaviour
     public float RunningConfidence = 0.0F;
     public BodySourceManager _BodyManager;
     
-    private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
+    public Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     //private CameraSpacePoint[] calibrationPositions = new CameraSpacePoint[25];
     
     private Dictionary<JointType, JointType> _BoneMap = new Dictionary<JointType, JointType>()

@@ -9,6 +9,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuUI;
     public GameObject BodyMenuController;
 
+    private float pressDownTime = 0.0f;
+    private bool pauseIntent = false;
+
     private void Start()
     {
         Resume();
@@ -16,12 +19,32 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKey(KeyCode.Return))
         {
-            if (gameIsPaused)
-                Resume();
-            else
-                Pause();
+            //Add to the pauseTimer
+            pressDownTime += Time.deltaTime;
+            //Perform a pause after 2 seconds or a immediate unpause
+            if (pauseIntent)
+            {
+                if (!gameIsPaused && pressDownTime > 2.0f)
+                {
+                    Pause();
+                    pressDownTime = 0.0f;
+                    pauseIntent = false;
+                }
+                else if (gameIsPaused)
+                {
+                    Resume();
+                    pressDownTime = 0.0f;
+                    pauseIntent = false;
+                }
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.Return))
+        {
+            //Start the pause-timer and indicate that the user wants to pause
+            pressDownTime = 0.0f;
+            pauseIntent = true;
         }
     }
 
