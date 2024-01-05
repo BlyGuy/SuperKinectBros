@@ -8,19 +8,22 @@ using TMPro;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public float mouseSensitivity = 100f;
+    //public float mouseSensitivity = 100f;
     
     public bool isFullscreen = true;
     public GameObject fullscreenCheckmark;
 
-    public bool KinectViewMoved = false;
-    public Transform KinectViewTransform;
+    public bool KinectViewEnabled = true;
+    public GameObject KinectView;
+    public GameObject KinectViewPanel;
+    public GameObject KinectViewCheckmark;
 
     //Resolution[] resolutions;
     //public TMP_Dropdown resolutionDropdown;
 
     void Start()
     {
+        //ToggleHalfTime();
         //resolutions = Screen.resolutions;
 
         //resolutionDropdown.ClearOptions();
@@ -45,16 +48,10 @@ public class SettingsMenu : MonoBehaviour
         //resolutionDropdown.RefreshShownValue();
     }
 
-
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
     }
-
-    //public void SetQuality(int qualityIndex)
-    //{
-    //    QualitySettings.SetQualityLevel(qualityIndex);
-    //}
 
     public void ToggleFullscreen()
     {
@@ -64,18 +61,32 @@ public class SettingsMenu : MonoBehaviour
         fullscreenCheckmark.SetActive(isFullscreen);//Toggle checkmark
     }
 
+    public void ToggleHalfTime()
+    {
+        Time.timeScale = 0.5f;
+    }
+
+    public void ToggleMoveKinectView()
+    {
+        //Move the Kinect View off-screen ;)
+        KinectViewEnabled = !KinectViewEnabled;
+        if (KinectViewEnabled)
+            KinectView.transform.position -= new Vector3(0.0f, 10000.0f, 0.0f);
+        else
+            KinectView.transform.position += new Vector3(0.0f, 10000.0f, 0.0f);
+        KinectView.GetComponent<BodySourceView>().updateBodyPositions();
+        KinectViewPanel.SetActive(KinectViewEnabled);
+        KinectViewCheckmark.SetActive(KinectViewEnabled);
+    }
+
+    //public void SetQuality(int qualityIndex)
+    //{
+    //    QualitySettings.SetQualityLevel(qualityIndex);
+    //}
+
     //public void SetResolution(int resolutionIndex)
     //{
     //    Resolution resolution = resolutions[resolutionIndex];
     //    Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     //}
-
-    public void ToggleMoveKinectView()
-    {
-        //if (KinectViewMoved)
-        //    KinectViewTransform.localPosition += 500.0f;
-        //else
-        //    KinectViewTransform.localPosition -= 500.0f;
-        KinectViewMoved = !KinectViewMoved;
-    }
 }

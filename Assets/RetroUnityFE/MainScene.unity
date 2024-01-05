@@ -276,7 +276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &112136118
 GameObject:
@@ -302,13 +302,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112136118}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.62, y: 9.21, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -33.3, y: 9.127929, z: 0.8297043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716011534}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &112136120
 MonoBehaviour:
@@ -764,7 +764,7 @@ RectTransform:
   m_Children:
   - {fileID: 1379131132}
   m_Father: {fileID: 1054907685}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -795,7 +795,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 143.48, y: 134.4}
+  m_Size: {x: 143.45, y: 134.4}
   m_EdgeRadius: 0
 --- !u!114 &338857870
 MonoBehaviour:
@@ -851,6 +851,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1775841091}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &338857871
 MonoBehaviour:
@@ -2233,12 +2245,12 @@ RectTransform:
   - {fileID: 853710844}
   - {fileID: 641327656}
   - {fileID: 1064308984}
-  m_Father: {fileID: 1775841092}
-  m_RootOrder: 5
+  m_Father: {fileID: 2093859025}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -0.018219}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1437.0729, y: 1080.0361}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &826926011
@@ -2670,7 +2682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1054907685
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2685,15 +2697,15 @@ RectTransform:
   - {fileID: 1311641950}
   - {fileID: 2030655651}
   - {fileID: 1171707105}
-  - {fileID: 338857868}
   - {fileID: 2133915954}
   - {fileID: 1429031612}
-  m_Father: {fileID: 1775841092}
-  m_RootOrder: 6
+  - {fileID: 338857868}
+  m_Father: {fileID: 2093859025}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -0.018219}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1437.0729, y: 1080.0361}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1054907686
@@ -2747,11 +2759,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 8bb5c568d806e534b8fc0337b29feff5, type: 2}
-  mouseSensitivity: 100
   isFullscreen: 1
   fullscreenCheckmark: {fileID: 1507253168}
-  KinectViewMoved: 0
-  KinectViewTransform: {fileID: 112136119}
+  KinectViewEnabled: 1
+  KinectView: {fileID: 0}
+  KinectViewPanel: {fileID: 2065314701}
+  KinectViewCheckmark: {fileID: 931489106}
 --- !u!1 &1059467505
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,6 +2934,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1775841091}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1064308986
 MonoBehaviour:
@@ -4128,6 +4153,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1775841091}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1382717251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4337,7 +4374,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1054907685}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5022,6 +5059,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1775841091}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1655525186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5483,8 +5532,6 @@ RectTransform:
   - {fileID: 1656511589}
   - {fileID: 1655525182}
   - {fileID: 1382717247}
-  - {fileID: 826926010}
-  - {fileID: 1054907685}
   m_Father: {fileID: 2093859025}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6308,6 +6355,8 @@ RectTransform:
   - {fileID: 2065314702}
   - {fileID: 1733397612}
   - {fileID: 1775841092}
+  - {fileID: 1054907685}
+  - {fileID: 826926010}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6409,7 +6458,7 @@ RectTransform:
   m_Children:
   - {fileID: 931489107}
   m_Father: {fileID: 1054907685}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6485,9 +6534,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 112136118}
+      - m_Target: {fileID: 1054907688}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ToggleMoveKinectView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

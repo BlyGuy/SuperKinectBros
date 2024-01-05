@@ -10,6 +10,7 @@ using Joint = Windows.Kinect.Joint;
 using WindowsInput.Native;
 using WindowsInput;
 using System;
+using UnityEngine.UIElements;
 
 public class BodySourceView : MonoBehaviour 
 {
@@ -17,7 +18,7 @@ public class BodySourceView : MonoBehaviour
     public float RunningConfidence = 0.0F;
     public BodySourceManager _BodyManager;
     
-    public Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
+    private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     //private CameraSpacePoint[] calibrationPositions = new CameraSpacePoint[25];
     
     private Dictionary<JointType, JointType> _BoneMap = new Dictionary<JointType, JointType>()
@@ -174,6 +175,16 @@ public class BodySourceView : MonoBehaviour
     private static Vector3 GetVector3FromJoint(Joint joint)
     {
         return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+    }
+
+    public void updateBodyPositions()
+    {
+        //Delete all body objects
+        List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
+        foreach (GameObject body in _Bodies.Values)
+        {
+            body.transform.position = transform.position;
+        }
     }
 
     private void ApplyMovementControls(Body body, GameObject bodyObject)

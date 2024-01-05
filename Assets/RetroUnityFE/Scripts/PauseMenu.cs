@@ -23,10 +23,10 @@ public class PauseMenu : MonoBehaviour
         {
             //Add to the pauseTimer
             pressDownTime += Time.deltaTime;
-            //Perform a pause after 2 seconds or a immediate unpause
+            //Perform a pause after 1 second or a immediate unpause
             if (pauseIntent)
             {
-                if (!gameIsPaused && pressDownTime > 2.0f)
+                if (!gameIsPaused && pressDownTime > 1.0f)
                 {
                     Pause();
                     pressDownTime = 0.0f;

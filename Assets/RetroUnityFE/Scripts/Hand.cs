@@ -9,6 +9,7 @@ public class Hand : MonoBehaviour
     public Sprite mHandClosedSprite;
     public bool handClosed = false;
     private bool handState = false;
+    private bool isClosingFist = false;
     
     private SpriteRenderer mSpriteRenderer;
 
@@ -26,15 +27,16 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //isClosingFist = false;
         //Switch to the right hand-sprite
         if (!handState && handClosed)
         {
-            handState = true;
+            isClosingFist = true;
             mSpriteRenderer.sprite = mHandClosedSprite;
         } else if (handState && !handClosed) {
-            handState = false;
             mSpriteRenderer.sprite = mHandOpenSprite;
         }
+        handState = handClosed;
     }
 
 
@@ -44,8 +46,13 @@ public class Hand : MonoBehaviour
         {
             try { collision.GetComponent<Button>().animator.Play("Highlighted", 0); }
             catch { }
-            if (handClosed)
+            if (handClosed && isClosingFist)
+            {
+                try { collision.GetComponent<Button>().animator.Play("Normal", 0); }
+                catch { }
                 collision.gameObject.GetComponent<Button>().onClick.Invoke();
+            }
+            isClosingFist = false;
         }
     }
 
