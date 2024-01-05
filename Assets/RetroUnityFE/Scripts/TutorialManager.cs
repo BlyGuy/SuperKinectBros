@@ -38,6 +38,8 @@ public class TutorialManager : MonoBehaviour
     private int[] gesturePerformances = {0, 0, 0, 0, 0, 0};
     public VideoClip[] gestureClips;
     public VideoPlayer gesturePlayer;
+    public Animator animator;
+    public Animator animator_vuurbal;
 
     private void Start()
     {
@@ -50,6 +52,31 @@ public class TutorialManager : MonoBehaviour
         {
             //TODO: Meer fanfare of feedback-mario reageert
             gesturePerformances[(int)state]++;
+        }
+        
+        if (Input.GetKeyDown(gestureKeyCodes[(int)state]))
+        {
+            switch (state)
+            {
+                case ETutorialState.STATE_RUN_RIGHT:
+                    animator.Play("run_right", 0);
+                    break;
+                case ETutorialState.STATE_RUN_LEFT:
+                    animator.Play("run_left", 0);
+                    break;
+                case ETutorialState.STATE_JUMP:
+                    animator.Play("jump", 0);
+                    break;
+                case ETutorialState.STATE_FIREBALL:
+                    animator.Play("fireball", 0);
+                    animator_vuurbal.Play("afvuren",0);
+                    break;
+                case ETutorialState.STATE_PAUSE:
+                    animator.Play("pauze", 0);
+                    break;
+                default:
+                    break;
+            }
         }
 
         //After five performances, go to next state
