@@ -303,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112136118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.3, y: 9.127929, z: 0.8297043}
+  m_LocalPosition: {x: -30.09, y: 9.127929, z: 0.8297043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716011534}
@@ -2762,7 +2762,7 @@ MonoBehaviour:
   isFullscreen: 1
   fullscreenCheckmark: {fileID: 1507253168}
   KinectViewEnabled: 1
-  KinectView: {fileID: 0}
+  KinectView: {fileID: 112136118}
   KinectViewPanel: {fileID: 2065314701}
   KinectViewCheckmark: {fileID: 931489106}
 --- !u!1 &1059467505
@@ -3554,7 +3554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   core: mesen
   gameName: Super Mario Bros (PC10)
-  gameDirectory: Assets/StreamingAssets/libretro~/roms
+  gameDirectory: libretro~/roms
   _timeScale: 1
   _rendererComponent: {fileID: 1377465667}
   _originalMaterial: {fileID: 2100000, guid: 195e6ea8323c2688c87656003fd07b55, type: 2}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
@@ -26,31 +27,32 @@ public class TutorialManager : MonoBehaviour
         KeyCode.Return,
         KeyCode.Escape //End
     };
-    //private string[] gestureStrings =
-    //{
-    //    "Run to the right",
-    //    "Run to the left",
-    //    "Jump using your arms",
-    //    "Gooi je arm naar de zijkant",
-    //    "Pauze door met je handen een kruisje te maken",
-    //    "You did it!!!",
-    //};
+    private string[] gestureStrings =
+    {
+        "Run right using your right knee.\nRaise it to the right to keep running.",
+        "Run left using your left knee.\nHold your knee up to keep running.",
+        "Jump using your arms.\nIt is recommended to fully put your arm down before the next jump.",
+        "Throw fireballs (and run faster) by holding one of your arms out.\nTo throw another fireball you must retreat your arm first.",
+        "Pause by crossing your arms above your shoulders. This gesture also needs to be performed to start the game. To go into the pause menu from the main game, hold this gesture for 1 second.",
+        "You did it!!! :D",
+    };
     private int[] gesturePerformances = {0, 0, 0, 0, 0, 0};
     public VideoClip[] gestureClips;
     public VideoPlayer gesturePlayer;
     public Animator animator;
     public Animator animator_vuurbal;
+    public TMP_Text tutorText;
 
     private void Start()
     {
         gesturePlayer.clip = gestureClips[0];
+        tutorText.text = gestureStrings[0];
     }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyUp(gestureKeyCodes[(int)state]))
         {
-            //TODO: Meer fanfare of feedback-mario reageert
             gesturePerformances[(int)state]++;
         }
         
@@ -84,12 +86,13 @@ public class TutorialManager : MonoBehaviour
         {
             state++;
             gesturePlayer.clip = gestureClips[(int)state];
+            tutorText.text = gestureStrings[(int)state];
         }
 
         //Check if the tutorial has ended
         if (state == ETutorialState.STATE_END)
         {
-            //TODO: Meer fanfare
+            //TODO: More fanfare
             SceneManager.LoadScene(0);
         }
     }

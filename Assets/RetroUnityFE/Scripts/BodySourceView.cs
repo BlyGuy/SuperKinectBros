@@ -96,7 +96,7 @@ public class BodySourceView : MonoBehaviour
                     _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                 //Always update the position of the body
                 UpdateBodyObject(body, _Bodies[body.TrackingId]);
-                ApplyMovementControls(body, _Bodies[body.TrackingId]);
+                ApplyMovementControls(body);
             }
         }
     }
@@ -187,14 +187,13 @@ public class BodySourceView : MonoBehaviour
         }
     }
 
-    private void ApplyMovementControls(Body body, GameObject bodyObject)
+    private void ApplyMovementControls(Body body)
     {
-        //Apply simple jump
         //var inputSimulator = new InputSimulator();
         CameraSpacePoint shoulderMiddle = body.Joints[JointType.SpineShoulder].Position;
         CameraSpacePoint shoulderLeft   = body.Joints[JointType.ShoulderLeft].Position;
         CameraSpacePoint shoulderRight  = body.Joints[JointType.ShoulderRight].Position;
-        CameraSpacePoint neck           = body.Joints[JointType.Neck].Position;
+        CameraSpacePoint neck           = body.Joints[JointType.Head].Position;
         CameraSpacePoint kneeRight      = body.Joints[JointType.KneeRight].Position;
         CameraSpacePoint kneeLeft       = body.Joints[JointType.KneeLeft].Position;
         CameraSpacePoint spineMiddle    = body.Joints[JointType.SpineMid].Position;
@@ -204,6 +203,7 @@ public class BodySourceView : MonoBehaviour
 
         float shoulderDistanceRight = shoulderRight.X - shoulderMiddle.X;
         float shoulderDistanceLeft = shoulderLeft.X - shoulderMiddle.X;
+        //Apply simple jump
         if ((leftHand.Y > neck.Y /* && leftHand.X > fireBallDistanceLeft*/)
             ||
             (rightHand.Y > neck.Y /* && rightHand.X < fireBallDistanceRight*/))
@@ -243,7 +243,8 @@ public class BodySourceView : MonoBehaviour
             var inputSimulator = new InputSimulator();
             inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_D);
             inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_A);
-        } else if (kneeLeft.Y > kneeRight.Y /* && footLeft.Y > footRight.Y */ && kneeLeft.X < hipMiddle.X + shoulderDistanceLeft * 1.5F) {
+        } else if (kneeLeft.Y > kneeRight.Y /* && footLeft.Y > footRight.Y */ && kneeLeft.X < hipMiddle.X + shoulderDistanceLeft * 1.5F)
+        {
             var inputSimulator = new InputSimulator();
             inputSimulator.Keyboard.KeyDown(VirtualKeyCode.VK_A);
             inputSimulator.Keyboard.KeyUp(VirtualKeyCode.VK_D);
@@ -271,11 +272,9 @@ public class BodySourceView : MonoBehaviour
         //TODO: Calculate distance from shoulder to hand
         //if that distance is mostly horizontal, then fireball
         if ((leftHand.Y < shoulderMiddle.Y && leftHand.Y > spineMiddle.Y &&
-        //if ((leftHand.Y < spineMiddle.Y &&
             (leftHand.X < fireBallDistanceLeft || leftHand.X > fireBallDistanceRight) )
             ||
             (rightHand.Y < shoulderMiddle.Y && rightHand.Y > spineMiddle.Y && 
-            //(rightHand.Y < spineMiddle.Y &&
             (rightHand.X < fireBallDistanceLeft || rightHand.X > fireBallDistanceRight)))
         {
             var inputSimulator = new InputSimulator();

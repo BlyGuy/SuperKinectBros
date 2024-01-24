@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE. */
 
+using UnityEngine;
 using SK.Libretro.Utilities;
 using System;
 using System.IO;
@@ -52,13 +53,14 @@ namespace SK.Libretro
 
             if (!string.IsNullOrEmpty(gameName))
             {
-                string directory = FileSystem.GetAbsolutePath(gameDirectory);
+                //string directory = FileSystem.GetAbsolutePath(gameDirectory);
 
-                string gamePath = GetGamePath(directory, gameName);
+                string gamePath = GetGamePath(gameDirectory, gameName);
                 if (gamePath == null)
                 {
                     // Try Zip archive
-                    string archivePath = FileSystem.GetAbsolutePath($"{directory}/{gameName}.zip");
+                    string archivePath = Path.Combine(Application.streamingAssetsPath, gameDirectory) + $"/{gameName}.zip";
+                    //string archivePath = FileSystem.GetAbsolutePath($"{directory}/{gameName}.zip");
                     if (File.Exists(archivePath))
                     {
                         Guid gameGuid = Guid.NewGuid();
@@ -142,7 +144,8 @@ namespace SK.Libretro
         {
             foreach (string extension in _core.ValidExtensions)
             {
-                string filePath = FileSystem.GetAbsolutePath($"{directory}/{gameName}.{extension}");
+                string filePath = Path.Combine(Application.streamingAssetsPath, directory) + $"/{gameName}.{extension}";
+                //string filePath = FileSystem.GetAbsolutePath($"{directory}/{gameName}.{extension}");
                 if (File.Exists(filePath))
                 {
                     return filePath;

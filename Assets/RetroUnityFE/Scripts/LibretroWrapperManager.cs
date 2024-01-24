@@ -8,7 +8,7 @@ public class LibretroWrapperManager : MonoBehaviour
 {
     public string core = "mesen";
     public string gameName = "Super Mario Bros (PC10)";
-    public string gameDirectory = "Assets/StreamingAssets/libretro~/roms";
+    public string gameDirectory = "libretro~/roms";
 
     [Range(0.5f, 2f)] [SerializeField] private float _timeScale = 1.0f;
 
